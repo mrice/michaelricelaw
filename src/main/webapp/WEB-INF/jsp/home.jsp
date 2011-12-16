@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,12 +9,11 @@
 	<title>michael rice law - software attorney</title>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/css/michaelrice.css" />" />
 </head>
+
 <body>
-	<p>Hi.</p> 
+	<p>Hi. I'm <strong>Michael Rice</strong>. I'm an attorney licensed to practice in Washington State.</p>
 	
-	<p>I'm <strong>Michael Rice</strong>. I'm an attorney licensed to practice in Washington State.</p>
-	
-	<p>I focus my practice on intellectual property law for software companies and open source projects. 
+	<p>I focus my practice on <strong>intellectual property law</strong> for software companies and open source projects. 
 	You can retain me to help you with non-disclosure agreements, employee assignment agreements, license agreements and disputes, copyright, trademark, and some limited patentability questions, and much more. 
 	I charge a <strong>flat fee of $250 per month</strong>, and I'll guarantee at least 5 hours of work doing any of the foregoing.</p>  
 	
@@ -23,8 +24,14 @@
 	Skype at michaelrubenrice<br/>
 	Phone at (206) 745-5001<br/>
 	Freenode as michaelrice<br/> 
-	By mail to 93 S. Jackson St., #60124, Seattle, Washington 98104.
+	By mail to 93 S. Jackson St., #60124, Seattle, Washington 98104.</p>
+	
+	<p>Page generated: <fmt:formatDate value="${currentTime}" type="time"/> </p>
+	
+	<p>The code for this site is open sourced at <a href="http://github.com/mrice/michaelricelaw">github.com/mrice/michaelricelaw</a>.</p>
+	
 </body>
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];

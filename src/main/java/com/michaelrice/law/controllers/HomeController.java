@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Home controller generates the home page for Michael Rice Law.
@@ -15,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class HomeController {
-	@RequestMapping(value="/",method=RequestMethod.GET)
-	public String home(Model model) {
+	@RequestMapping(value="/law",method=RequestMethod.GET)
+	public ModelAndView home() {
 		
-		model.addAttribute("currentTime", new Date());
+		ModelAndView modelAndView=new ModelAndView("home");
+
+		modelAndView.addObject("currentTime", new Date());
 		
-		return "home";
+		return modelAndView;
 	}
 }
