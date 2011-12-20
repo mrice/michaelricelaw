@@ -3,12 +3,13 @@ package com.michaelrice.law.domain;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="blog")
 public class BlogEntry {
 	
 	@Id
@@ -17,12 +18,15 @@ public class BlogEntry {
 	private Integer id;
 
 	@Column(name="PUBLISH_DATE")
-	private Date publishDate;
+	private Date publishDate = new Date();
 	
-	@Column(name="TITLe")
+	@Column(name="TITLE")
 	private String title;
 
-	@Column(name="BODY")
+	@Column(name="URL_PART")
+	private String urlPart;
+
+	@Column(name="BODY", columnDefinition="TEXT")
 	private String body;
 	
 	public Integer getId() {
@@ -44,6 +48,13 @@ public class BlogEntry {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public String getUrlPart() {
+		return urlPart;
+	}
+	public void setUrlPart(String urlPart) {
+		this.urlPart = urlPart;
 	}
 	
 	public String getBody() {
