@@ -25,6 +25,7 @@ public class TestBlogServiceDao {
 	
 	@Test
 	public void testSaveNewBlogEntry() {
+		
 		BlogEntry entry=new BlogEntry();
 		entry.setTitle("Hello, world");
 		
@@ -40,6 +41,23 @@ public class TestBlogServiceDao {
 		List<BlogEntry> entries=blogServiceDao.listAll();
 		assertNotNull("Entries should not be null", entries);
 		assertTrue("Entries should have more than one entry", entries.size()>0);
+		
+	}
+
+	@Test
+	public void testListLastN() {
+		
+		for (int i=0; i<10; i++) {
+			BlogEntry entry=new BlogEntry();
+			entry.setTitle("Test "+i);
+			blogServiceDao.save(entry);
+		}
+		
+		int maxCount=5;
+		
+		List<BlogEntry> entries=blogServiceDao.listLastN(maxCount);
+		assertNotNull("Entries should not be null", entries);
+		assertTrue("Entries should have exactly "+maxCount+" entries", entries.size()==maxCount);
 		
 	}
 	

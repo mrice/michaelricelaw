@@ -47,19 +47,40 @@ public class HibernateBlogServiceDao implements BlogServiceDao {
 	@SuppressWarnings("unchecked")
 	public List<BlogEntry> listAll() {
 		
-		Session session=sessionFactory.getCurrentSession();
-		
-		session.beginTransaction();
-		List<BlogEntry> result=session.createQuery("from BlogEntry").list();
-		session.getTransaction().commit();
-		
+		List<BlogEntry> result=null;
+		try {
+			Session session=sessionFactory.getCurrentSession();
+			
+			session.beginTransaction();
+			Query query = session.createQuery("from BlogEntry order by publishDate desc");
+			result = query.list();
+			session.getTransaction().commit();
+			
+		} catch (Exception e) {
+			//TODO log this
+			e.printStackTrace();
+		}
 		return result;
 	}
 
 	@Override
 	public List<BlogEntry> listLastN(int count) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<BlogEntry> result=null;
+		try {
+			Session session=sessionFactory.getCurrentSession();
+			
+			session.beginTransaction();
+			Query query = session.createQuery("from BlogEntry order by publishDate desc");
+			query.setMaxResults(count);
+			result=query.list();
+			session.getTransaction().commit();
+			
+		} catch (Exception e) {
+			//TODO log this
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override
